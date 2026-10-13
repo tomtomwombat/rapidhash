@@ -51,8 +51,8 @@ pub const DEFAULT_RAPID_SECRETS: RapidSecrets = RapidSecrets::seed_cpp(DEFAULT_S
 /// }
 /// ```
 ///
-/// TODO: serde or serialization support.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct RapidSecrets {
     /// The core rapidhash seed.
     pub seed: u64,

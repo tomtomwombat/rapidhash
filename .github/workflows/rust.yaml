@@ -43,6 +43,17 @@ jobs:
       - name: Compile and run tests
         run: cargo test -p rapidhash --no-fail-fast --lib --tests --features=unsafe
 
+  test-serde:
+    name: "Test (serde)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Rust dependency cache
+        uses: Swatinem/rust-cache@v2
+      - name: Compile and run tests
+        run: cargo test -p rapidhash --no-fail-fast --features=serde
+
   test-nightly-all-features:
     name: "Test (nightly, all features)"
     runs-on: ubuntu-latest

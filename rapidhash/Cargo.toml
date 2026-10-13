@@ -29,6 +29,7 @@ rand = ["std", "getrandom_03"]  # deprecated: alias for std + getrandom (the old
 getrandom_04 = ["dep:getrandom_04"]  # seed hasher secrets from OS/platform entropy using getrandom v0.4, incl. no_std and wasm (wasm32-unknown-unknown also needs getrandom's wasm_js backend enabled by the top-level binary)
 getrandom_03 = ["dep:getrandom_03"]  # the same as getrandom_04, but using getrandom v0.3
 rng = ["dep:rand_core"]  # enable RapidRng, a rand Rng-compatible fast PRNG using rapidrng
+serde = ["dep:serde"]  # implement serde serialization for RapidSecrets
 nightly = []  # enable nightly features, faster str hashing and likely/unlikely hints
 unsafe = []  # enable unsafe pointer arithmetic; this is used to check for bounds-check regressions
 
@@ -40,6 +41,7 @@ unsafe = []  # enable unsafe pointer arithmetic; this is used to check for bound
 [dependencies]
 rustversion = "1.0"
 rand_core = { version = "0.9", default-features = false, optional = true }
+serde = { version = "1.0", default-features = false, features = ["derive"], optional = true }
 getrandom_04 = { version = "0.4", package = "getrandom", default-features = false, optional = true }
 getrandom_03 = { version = "0.3", package = "getrandom", default-features = false, optional = true }
 
@@ -49,3 +51,4 @@ rand = "0.10.0"
 rapidrand = "0.1.1"
 tempfile = "3.14.0" # testing rapidhash_file
 assert_cmd = "2.1.1"
+serde_json = "1.0"
